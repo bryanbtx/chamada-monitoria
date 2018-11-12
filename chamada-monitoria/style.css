@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 86px;
+	color:#38525E;
+}
+h1 {
+	text-align: center;
+	margin-top: 5%;
+}
+p {
+	text-align: center;
+	margin: 5%;
+}
+div {
+	text-align:center;
+	width:100%;
+}
+input {
+	border:none;
+	border-bottom-style:solid;
+    border-color: #AE0F15;
+	margin:1%;
+	width:98%;
+	text-align:left;
+	font-size: inherit;
+}
+input[type="radio"] {
+	width: 62px;
+	height: 62px;
+	text-align: left;
+}
+input[type="checkbox"] {
+	width: 50px;
+	height: 50px;
+}
+@-moz-document url-prefix() {
+	input[type="radio"] {
+		width: auto;
+		height: auto;
+		text-align: left;
+	}
+	input[type="checkbox"] {
+		width: auto;
+		height: auto;
+	}
+  }
+button {
+    border-style: solid;
+    border-color: #38525E;
+	margin:1%;
+	width:98%;
+	text-align:center;
+    background-color: #eeeeee;
+	font-size: inherit;
+	display:block;
+	padding-bottom:5px;
+	float:left;
+	transition:background-color 0.15s, color 0.15s;
+}
+label {
+	margin: 1%;
+    text-align: left;
+    float: left;
+}
+button:focus {
+    background-color: #dddddd;
+	color:#111111;
+}
+select{
+	min-width: 98%;
+	widows: inherit;
+	background: #fff;
+	font-size: x-large;
+	padding: 5px;
+	margin: 1%;
+	border: solid #AE0F15;
+}
+select option,select option:hover{
+	padding: 5px;
+	font-size: 16px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	select{
+		font-size: 86px;
+	}
+}
+.radiobutton {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	text-align: left;
+	margin-left: 25%;
+	width: 74%;
+}
+table{
+	border: 1px solid #AE0F15;
+	border-collapse: collapse;
+	margin: 1%;
+	width: 98%;
+}
+td, th {
+    text-align: center;
+	padding: 8px;
+	height: 100%;
+	border-bottom: 1px solid #AE0F15;
+}

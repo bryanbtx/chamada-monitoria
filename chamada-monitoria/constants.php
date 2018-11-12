@@ -1,0 +1,9 @@
+<?php
+define('DB_NAME','dados');
+define('DB_USER','root');
+define('DB_PASSWORD','');
+define('DB_HOST','localhost');
+//id5541543_dados
+//id5541543_dados
+//dados
+?>
