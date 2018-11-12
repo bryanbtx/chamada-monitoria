@@ -1,15 +1,16 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-    header("Location: ../../index.php",true,303);
+    header("Location: ../..",true,303);
     exit;
 }
 else{
     if($_SESSION['id']==1){
-        header("Location: ../index.php",true,303);
+        header("Location: ..",true,303);
     exit;
     }
 }
+//deixar o usu selecionar a data???<- nao fassa isso so estou pensando
 ?>
 <html>
 	<head>
@@ -19,7 +20,6 @@ else{
 		<title>Monitoria - Chamada</title>
 	</head>
 	<body>
-		//deixar o usu selecionar a data???<- nao fassa isso so estou pensando
 		<div>
 			<p>Lista de presenca para monitor</p>
 		</div>
@@ -93,7 +93,7 @@ else{
 					?>
 				</form>
 			</div>
-			<form action="../index.php" method="post">
+			<form action="..">
 				<button type="submit">Voltar</button>
 			</form>
 		</div>

@@ -33,7 +33,7 @@ echo '
 <body>
     <div>
         <p>'.$response.'</p>
-        <form action="./index.php" method="post">
+        <form action=".">
             <button type="submit">Voltar</button>
         </form>
     </div>

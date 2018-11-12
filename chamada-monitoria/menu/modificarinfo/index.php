@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-    header("Location: ../../index.php",true,303);
+    header("Location: ../..",true,303);
     exit;
 }
 ?>
@@ -94,7 +94,7 @@ if(!isset($_SESSION['id'])){
       ';
   }
 ?>
-    <form action="../index.php" method="post">
+    <form action="..">
 		<button type="submit">Voltar</button>
 	</form>
     <script>

@@ -1,12 +1,12 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-    header("Location: ../../index.php",true,303);
+    header("Location: ../..",true,303);
     exit;
 }
 else{
     if(!$_SESSION['id']==1){
-        header("Location: ../index.php",true,303);
+        header("Location: ..",true,303);
     exit;
     }
 }
@@ -38,20 +38,20 @@ else{
             echo $combo
             ?>
             </select>
-            <div class="radiobutton">
-                <input type="radio" name="dia_semana" value="1" checked> Segunda<br>
-                <input type="radio" name="dia_semana" value="2"> Terça<br>
-                <input type="radio" name="dia_semana" value="3"> Quarta<br>
-                <input type="radio" name="dia_semana" value="4"> Quinta<br>
-                <input type="radio" name="dia_semana" value="5"> Sexta<br>
-                <input type="radio" name="dia_semana" value="6"> Sabado
-            </div>
+            <select name="dia_semana">
+                <option value="1">Segunda</option checked>
+                <option value="2">Terca</option>
+                <option value="3">Quarta</option>
+                <option value="4">Quinta</option>
+                <option value="5">Sexta</option>
+                <option value="6">Sabado</option>
+            </select>
             <input id="hi" type="text" name="hora_inicio" placeholder="Hora do inicio" required>
             <input id="ht" type="text" name="hora_termino" placeholder="Hora do termino" required>
             Formato das horas: hh:mm<br>ex: 13:30
             <button type="submit">Adicionar horario</button>
         </form>
-        <form action="../index.php" method="post">
+        <form action="..">
 			<button type="submit">Voltar</button>
 		</form>
     <div>

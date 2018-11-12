@@ -42,10 +42,10 @@ echo '
 <body>
     <div>
         <p>'.$response.'</p>
-        <form action="./index.php" method="post">
+        <form action=".">
             <button type="submit">Voltar</button>
         </form>
-        <form action="../index.php" method="post">
+        <form action="..">
             <button type="submit">Ir para o login</button>
         </form>
     </div>

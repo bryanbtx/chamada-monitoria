@@ -38,6 +38,6 @@ if(!isset($_SESSION['id'])){
 			die();
     }
 }
-header("Location: ./index.php",true,303);
+header("Location: .",true,303);
 exit;
 ?>

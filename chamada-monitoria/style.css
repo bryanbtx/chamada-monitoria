@@ -24,21 +24,11 @@ input {
 	text-align:left;
 	font-size: inherit;
 }
-input[type="radio"] {
-	width: 62px;
-	height: 62px;
-	text-align: left;
-}
 input[type="checkbox"] {
 	width: 50px;
 	height: 50px;
 }
 @-moz-document url-prefix() {
-	input[type="radio"] {
-		width: auto;
-		height: auto;
-		text-align: left;
-	}
 	input[type="checkbox"] {
 		width: auto;
 		height: auto;
@@ -74,6 +64,7 @@ select{
 	padding: 5px;
 	margin: 1%;
 	border: solid #AE0F15;
+	height: 1.5em;
 }
 select option,select option:hover{
 	padding: 5px;
@@ -83,13 +74,6 @@ select option,select option:hover{
 	select{
 		font-size: 86px;
 	}
-}
-.radiobutton {
-	margin-top: 1%;
-	margin-bottom: 1%;
-	text-align: left;
-	margin-left: 25%;
-	width: 74%;
 }
 table{
 	border: 1px solid #AE0F15;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['id'])){
-	header("Location: ./menu/index.php",true,303);
+	header("Location: ./menu",true,303);
     exit;
 }
 ?>
@@ -26,7 +26,7 @@ if(isset($_SESSION['id'])){
 				</div>
 			</form>
 			<div>
-				<form action="./esqueceu/index.php" method="post">
+				<form action="./esqueceu">
 					<button type="submit">Esqueceu a senha?</button>
 				</form>
 			</div>

@@ -36,10 +36,10 @@ echo '
 <body>
 	<div>
 		<p>'.$response.'</p>
-        <form action="../index.php" method="post">
+        <form action="..">
 			<button type="submit">Ir para o menu</button>
 		</form>
-		<form action="../modificarinfo/index.php" method="post">
+		<form action="../modificarinfo">
             <button type="submit">Modificar alguma informações</button>
         </form>
     </div>

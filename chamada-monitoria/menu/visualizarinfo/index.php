@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-    header("Location: ../../index.php",true,303);
+    header("Location: ../..",true,303);
     exit;
 }
 include_once dirname(dirname(__DIR__)).'/bd_conn.php';
@@ -35,7 +35,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
                 </select>
                 <table id="info">
                 </table>
-                <form action="../index.php" method="post">
+                <form action="..">
                     <button type="submit">Voltar</button>
                 </form>
                 <script>
@@ -141,7 +141,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
                 echo '<body><p>Nao foi possivel recuperar as informacoes, tente novamente mais tarde</p>';
             }
             echo '
-            <form action="../index.php" method="post">
+            <form action="..">
                 <button type="submit">Voltar</button>
             </form>
             ';

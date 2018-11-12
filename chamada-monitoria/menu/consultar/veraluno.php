@@ -1,20 +1,20 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-	header("Location: ../../index.php",true,303);
+	header("Location: ../..",true,303);
 	exit;
 }
 else{
 	if($_SESSION['id']!=1){
-		header("Location: ../index.php",true,303);
+		header("Location: ..",true,303);
 		exit;
 	}
 }
+//remover o ano para diminuir o espaco
 ?>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../zerar.css">
 <link rel="stylesheet" type="text/css" href="../../style.css">
-//remover o ano para diminuir o espaco
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
 	echo '<table>';
@@ -57,10 +57,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	echo '</table>';
 }
 ?>
-<form action="./index.php" method="post">
+<form action=".">
 	<button type="submit">Voltar</button>
 </form>
-<form action="../index.php" method="post">
+<form action="..">
 	<button type="submit">Ir para o menu</button>
 </form>
 <script>

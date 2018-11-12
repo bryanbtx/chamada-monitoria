@@ -29,11 +29,11 @@ echo '
 </head>
 <body>
     <div>
-        <form action="./index.php" method="post">
+        <form action=".">
             <p>'.$response.'</p>
             <button type="submit">Voltar</button>
         </form>
-        <form action="../index.php" method="post">
+        <form action="..">
 			<button type="submit">Ir para o menu</button>
 		</form>
     </div>

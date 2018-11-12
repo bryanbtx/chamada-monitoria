@@ -1,6 +1,5 @@
 <?php
 class bd_conn{
-	//da uns ORDER nos select :)
 	private $con;
 	public $errorCode=0;
 	function __construct(){
@@ -91,7 +90,7 @@ class bd_conn{
 		return $stmt->execute();
 	}
 	function selectUsuarioAll(){
-		$stmt=$this->con->prepare("select * from monitor;");
+		$stmt=$this->con->prepare("select * from monitor order by ra;");
 		$stmt->execute();
 		return $stmt->get_result();
 	}
@@ -101,7 +100,7 @@ class bd_conn{
 		return $stmt->execute();
 	}
 	function selectHorariosAll(){
-		$stmt=$this->con->prepare("select * from horario;");
+		$stmt=$this->con->prepare("select * from horario order by dia_semana;");
 		$stmt->execute();
 		return $stmt->get_result();
 	}
@@ -121,7 +120,7 @@ class bd_conn{
 		return $stmt->execute();
 	}
 	function selectHorarioById_mo($id_mo){
-		$stmt=$this->con->prepare("select * from horario where id_ho_mo=?;");
+		$stmt=$this->con->prepare("select * from horario where id_ho_mo=? order by dia_semana;");
 		$stmt->bind_param("i",$id_mo);
 		$stmt->execute();
 		return $stmt->get_result();
@@ -137,11 +136,6 @@ class bd_conn{
 		$stmt->execute();
 		return $stmt->get_result();
 	}
-	function selectDiatodo($id_mo){
-		$stmt=$this->con->prepare("select distinct presenca.data_pre from presenca inner join aluno on presenca.id_pr_al=aluno.id_al where aluno.id_al_mo=".$id_mo.";");
-		$stmt->execute();
-		return $stmt->get_result();
-	}
 	function selectQtdAluno($id_mo){
 		$stmt=$this->con->prepare('select count(*)"qtd" from aluno where id_al_mo=?;');
 		$stmt->bind_param("i",$id_mo);
@@ -149,12 +143,12 @@ class bd_conn{
 		return $stmt->get_result()->fetch_assoc();
 	}
 	function selectInfoAll(){
-		$stmt=$this->con->prepare('select id_mo,nome,email,prof_resp,disciplina,curso,(select count(*) from aluno where id_al_mo=id_mo)"qtd" from monitor;');
+		$stmt=$this->con->prepare('select id_mo,nome,email,prof_resp,disciplina,curso,(select count(*) from aluno where id_al_mo=id_mo)"qtd" from monitor order by nome;');
 		$stmt->execute();
 		return $stmt->get_result();
 	}
 	function selectQtdPresenca($id_mo){
-		$stmt=$this->con->prepare('select nome,(select count(*) from presenca where id_pr_al=id_al)"qtd" from aluno where id_al_mo=?;');
+		$stmt=$this->con->prepare('select nome,(select count(*) from presenca where id_pr_al=id_al)"qtd" from aluno where id_al_mo=? order by nome;');
 		$stmt->bind_param("i",$id_mo);
 		$stmt->execute();
 		return $stmt->get_result();
