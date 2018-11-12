@@ -35,11 +35,11 @@ echo '
 </head>
 <body>
     <div>
-        <form action=".">
+        <form action="./index.php" method="post">
             <p>'.$response.'</p>
             <button type="submit">Voltar</button>
 		</form>
-		<form action="..">
+		<form action="../index.php" method="post">
 			<button type="submit">Ir para o menu</button>
 		</form>
     </div>

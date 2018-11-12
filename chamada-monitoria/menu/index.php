@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-	header("Location: ..",true,303);
+	header("Location: ../index.php",true,303);
     exit;
 }
 ?>
@@ -40,27 +40,27 @@ if(!isset($_SESSION['id'])){
 			}
 			echo '
 			<div>
-				<form action="./criar">
+				<form action="./criar/index.php" method="post">
 					<button type="submit">Criar Monitor</button>
 				</form>
 				
-				<form action="./consultar">
+				<form action="./consultar/index.php" method="post">
 					<button type="submit">Consultar Aluno</button>
 				</form>
 
-				<form action="./visualizarinfo">
+				<form action="./visualizarinfo/index.php" method="post">
 					<button type="submit">Visualizar Informacoes de um monitor</button>
 				</form>
 
-				<form action="./modificarinfo">
+				<form action="./modificarinfo/index.php" method="post">
 					<button type="submit">Modificar informacoes de um monitor</button>
 				</form>
 
-				<form action="./adicionarhorario">
+				<form action="./adicionarhorario/index.php" method="post">
 					<button type="submit">Adicionar horarios de um monitor</button>
 				</form>
 
-				<form action="./removerhorario">
+				<form action="./removerhorario/index.php" method="post">
 					<button type="submit">Remover horarios de um monitor</button>
 				</form>
 
@@ -73,35 +73,35 @@ if(!isset($_SESSION['id'])){
 		else{
 			echo '
 			<div>
-			<form action="./adicionar">
+			<form action="./adicionar/index.php" method="post">
 				<button type="submit">Cadastrar aluno</button>
 			</form>
 
-			<form action="./chamada">
+			<form action="./chamada/index.php" method="post">
 				<button type="submit">Realizar presenca</button>
 			</form>
 
-			<form action="./visualizarhorario">
+			<form action="./visualizarhorario/index.php" method="post">
 				<button type="submit">Visualizar Horario de Monitoria</button>
 			</form>
 			
-			<form action="./visualizarchamada">
+			<form action="./visualizarchamada/index.php" method="post">
 				<button type="submit">Visualizar Chamada</button>
 			</form>
 
-			<form action="./quantidadepresenca">
+			<form action="./quantidadepresenca/index.php" method="post">
 				<button type="submit">Quantidade de presenca para cada aluno</button>
 			</form>
 
-			<form action="./visualizarobs">
+			<form action="./visualizarobs/index.php" method="post">
 				<button type="submit">Visualizar Observacoes</button>
 			</form>
 
-			<form action="./visualizarinfo">
+			<form action="./visualizarinfo/index.php" method="post">
 				<button type="submit">Visualizar Informacoes</button>
 			</form>
 			
-			<form action="./modificarinfo">
+			<form action="./modificarinfo/index.php" method="post">
 				<button type="submit">Modificar informacoes</button>
 			</form>
 

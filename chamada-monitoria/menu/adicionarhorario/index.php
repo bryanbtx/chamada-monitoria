@@ -1,12 +1,12 @@
 <?php
 session_start();
 if(!isset($_SESSION['id'])){
-    header("Location: ../..",true,303);
+    header("Location: ../../index.php",true,303);
     exit;
 }
 else{
     if(!$_SESSION['id']==1){
-        header("Location: ..",true,303);
+        header("Location: ../index.php",true,303);
     exit;
     }
 }
@@ -51,7 +51,7 @@ else{
             Formato das horas: hh:mm<br>ex: 13:30
             <button type="submit">Adicionar horario</button>
         </form>
-        <form action="..">
+        <form action="../index.php" method="post">
 			<button type="submit">Voltar</button>
 		</form>
     <div>

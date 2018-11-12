@@ -13,7 +13,7 @@
             <input type="text" placeholder="RA" name="ra" required>
             <button type="submit">Enviar</button>
         </form>
-		<form action="..">
+		<form action="../index.php" method="post">
             <button type="submit">Voltar</button>
         </form>
     </div>
