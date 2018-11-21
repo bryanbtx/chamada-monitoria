@@ -13,21 +13,21 @@ else{
 ?>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../../zerar.css">
-		<link rel="stylesheet" type="text/css" href="../../style.css">
-		<title>Presenca</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../../custom.css">
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Monitoria - Presença dos Alunos</title>
 	</head>
 	<body onload="load()">
-		<div>
-			<p>Presenca</p>
-		</div>
-		<div>
-			<div id="resp">
+		<div style="margin:1%">
+			<div class="jumbotron">
+				<h1 class="display-8">Presença Atuais dos Alunos</h1>
 			</div>
-			<form action="../index.php" method="post">
-				<button type="submit">Voltar</button>
-			</form>
+			<div>
+				<div id="resp">
+				</div>
+				<a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>
+			</div>
 		</div>
 		<script>
 		function load(){
@@ -52,11 +52,11 @@ else{
 			?>
 			);
 			if(presenca['nome'].length<=0){
-				resp.innerHTML="<p>Nenhuma presenca foi registrada!</p>";
+				resp.innerHTML="<p>Nenhuma presença foi Registrada!</p>";
 			}
 			else{
                 var inner;
-				inner="<table>";
+				inner='<table class="table">';
                 inner+="<tr><th>Aluno</th><th>Qtd.</th></tr>";
                 for(var i=0;i<presenca["nome"].length;i++){
                     inner+="<tr><td>"+presenca["nome"][i]+"</td><td>"+presenca["qtd"][i]+"</td></tr>";

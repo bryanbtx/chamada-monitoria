@@ -8,95 +8,110 @@ if(!isset($_SESSION['id'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../zerar.css">
-    <link rel="stylesheet" type="text/css" href="../../style.css">
-	<title>Modificar Monitor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../../custom.css">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Monitoria - Modificar Informações</title>
 </head>
 <body>
-<?php
-  echo "<p>Modificar informacoes</p>";
-  if($_SESSION['id']==1){
-      echo '
-      <div>
-          <form action="processo.php" method="post" onsubmit="return validate()">
-              <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
-              <select name="id" required>
-      ';
-      include_once dirname(dirname(__DIR__)).'/bd_conn.php';
-      $db=new bd_conn();
-      $user=$db->selectUsuarioAll();
-      $combo="";
-      while($row=$user->fetch_assoc()){
-          $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
-      }
-      echo $combo.'
-              </select>
+    <div style="margin:1%">
+        <div class="jumbotron">
+            <h1 class="display-8">Modificar Informações</h1>
+        </div>
+    <?php
+    if($_SESSION['id']==1){
+        echo '
+        <div>
+            <form action="processo.php" method="post" onsubmit="return validate()">
+                <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
+                <select style="margin-bottom: 1rem;" class="form-control form-control-lg" name="id" required>
+        ';
+        include_once dirname(dirname(__DIR__)).'/bd_conn.php';
+        $db=new bd_conn();
+        $user=$db->selectUsuarioAll();
+        $combo="";
+        while($row=$user->fetch_assoc()){
+            $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+        }
+        echo $combo.'
+                </select>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="ra" type="text" placeholder="RA" name="ra">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="nome" type="text" placeholder="Nome" name="nome">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="email" type="text" placeholder="Email" name="email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="prof_resp" type="text" placeholder="Professor responsável" name="prof_resp">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="disciplina" type="text" placeholder="Disciplina" name="disciplina">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="curso" type="text" placeholder="Curso" name="curso">
+                </div>
 
-              <input id="ra" type="text" placeholder="RA" name="ra">
+                <button class="btn btn-fatec-red btn-block btn-lg" type="submit">Alterar Informações</button>
+            </form>
 
-              <input id="nome" type="text" placeholder="Nome" name="nome">
+            <form action="../alterarsenha/index.php" method="post" onsubmit="return validateSenha()">
+            <select style="margin-top:1rem;margin-bottom: 1rem;" class="form-control form-control-lg" name="id" required>
+            ';
+        echo $combo.'
+            </select>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="senha" type="password" placeholder="Senha" name="senha" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="r_senha" type="password" placeholder="Repete a senha" name="r_senha" required>
+                </div>
 
-              <input id="email" type="text" placeholder="Email" name="email">
+                <button class="btn btn-fatec-red btn-block btn-lg rounded-top" type="submit">Alterar senha</button>
+            </form>
+        </div>
+        ';
+    }
+    else{
+        echo '
+        <div>
+            <form action="processo.php" method="post" onsubmit="return validate()">
+                <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
 
-              <input id="prof_resp" type="text" placeholder="Professor responsavel" name="prof_resp">
+                <input id="ra" type="hidden" placeholder="RA" name="ra">
 
-              <input id="disciplina" type="text" placeholder="Disciplina" name="disciplina">
+                <input id="nome" type="hidden" placeholder="Nome" name="nome">
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="email" type="text" placeholder="Email" name="email">
+                </div>
 
-              <input id="curso" type="text" placeholder="Curso" name="curso">
+                <input id="prof_resp" type="hidden" placeholder="Professor responsável" name="prof_resp">
 
-              <button type="submit">Alterar informacoes</button>
-          </form>
+                <input id="disciplina" type="hidden" placeholder="Disciplina" name="disciplina">
 
-          <form action="../alterarsenha/index.php" method="post" onsubmit="return validateSenha()">
-          <select name="id" required>
-          ';
-      echo $combo.'
-                  </select>
-              <input id="senha" type="password" placeholder="Senha" name="senha" required>
+                <input id="curso" type="hidden" placeholder="Curso" name="curso">
 
-              <input id="r_senha" type="password" placeholder="Repetir senha" name="r_senha" required>
+                <button class="btn btn-fatec-red btn-block btn-lg" type="submit">Alterar Email</button>
+            </form>
 
-              <button type="submit">Alterar senha</button>
-          </form>
-      </div>
-      ';
-  }
-  else{
-      echo '
-      <div>
-          <form action="processo.php" method="post" onsubmit="return validate()">
-              <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
+            <form action="../alterarsenha/index.php" method="post" onsubmit="return validateSenha()">
+                <div class="form-group">
+                    <input style="margin-top: 1rem;" class="form-control form-control-lg" id="senha" type="password" placeholder="Senha" name="senha" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="r_senha" type="password" placeholder="Repete a senha" name="r_senha" required>
+                </div>
 
-              <input id="ra" type="hidden" placeholder="RA" name="ra">
-
-              <input id="nome" type="hidden" placeholder="Nome" name="nome">
-
-              <input id="email" type="text" placeholder="Email" name="email">
-
-              <input id="prof_resp" type="hidden" placeholder="Professor responsavel" name="prof_resp">
-
-              <input id="disciplina" type="hidden" placeholder="Disciplina" name="disciplina">
-
-              <input id="curso" type="hidden" placeholder="Curso" name="curso">
-
-              <button type="submit">Alterar Email</button>
-          </form>
-
-          <form action="../alterarsenha/index.php" method="post" onsubmit="return validateSenha()">
-              <input id="senha" type="password" placeholder="Senha" name="senha" required>
-
-              <input id="r_senha" type="password" placeholder="Repetir senha" name="r_senha" required>
-
-              <button type="submit">Alterar senha</button>
-          </form>
-      </div>
-      ';
-  }
-?>
-    <form action="../index.php" method="post">
-		<button type="submit">Voltar</button>
-	</form>
+                <button class="btn btn-fatec-red btn-block btn-lg rounded-top" type="submit">Alterar senha</button>
+            </form>
+        </div>
+        ';
+    }
+    ?>
+        <a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar para o Menu</a>
+    </div>
     <script>
         function validate(){
             var msg="";

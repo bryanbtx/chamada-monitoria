@@ -13,29 +13,31 @@ else{
 ?>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../../zerar.css">
-	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../../custom.css">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Monitoria - Adicionar Aluno</title>
 </head>
 <body>
-	<div>
-		<p>Cadastro do aluno</p>
-	</div>
-	<div>
-		<form action="processo.php" method="post" onsubmit="return validate()">
-			<div>
-				<p id="alerta" style="text-align:left; color:#AE0F15;"></p>
+	<div style="margin:1%">
+		<div class="jumbotron">
+			<h1 class="display-8">Cadastro dos Alunos</h1>
+			<p id="alerta" style="text-align:left; color:#AE0F15;"></p>
+		</div>
+		<div>
+			<form action="./processo.php" method="post"  onsubmit="return validate()">
 				<input type="hidden" id="nomes" name="nome_a" placeholder="Nome">
-				<input type="text" id="aluno" placeholder="Nome">
-				<button type="reset" onclick="add()">Adicionar a lista</button>
-				<label id="alunos"></label>
-				<button type="submit">Cadastrar alunos que estao na lista</button>
-			</div>
-		</form>
-		<form action="../index.php" method="post">
-			<button type="submit">Voltar</button>
-		</form>
+				<div class="form-group">
+					<input type="text" id="aluno" placeholder="Nome" class="form-control form-control-lg">
+				</div>
+				<div class="form-group">
+					<button type="reset" class="btn btn-fatec-red btn-block btn-lg" onclick="add()">Adicionar o Aluno na Lista</button>
+				</div>
+				<h4 id="alunos" class="label label-default"></h4>
+				<button type="submit" class="btn btn-fatec-red btn-block btn-lg rounded-top">Cadastrar os Alunos Registrados na Lista</button>
+			</form>
+			<a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar Para o Menu</a>
+		</div>
 	</div>
 	<script>
 		function add(){

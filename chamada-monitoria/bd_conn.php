@@ -153,5 +153,10 @@ class bd_conn{
 		$stmt->execute();
 		return $stmt->get_result();
 	}
+	function deleteMonitor($id_mo){
+		$stmt=$this->con->prepare("delete from monitor where id_mo=?;");
+		$stmt->bind_param("i",$id_mo);
+		return $stmt->execute();
+	}
 }
 ?>

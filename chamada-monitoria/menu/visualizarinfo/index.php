@@ -9,17 +9,20 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../../zerar.css">
-	<link rel="stylesheet" type="text/css" href="../../style.css">
-	<title>Informacoes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../custom.css">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Monitoria - Informações dos Monitores</title>
 </head>
 	<?php
 		if($_SESSION['id']==1){
             echo '
                 <body onload="load()">
-                <p>Selecione um monitor</p>
-                <select id="monitores" onchange="change()" required>
+                <div style="margin:1%">
+                <div class="jumbotron">
+                    <h1 class="display-8">Selecione um monitor</h1>
+                </div>
+                <select id="monitores" class="form-control form-control-lg" onchange="change()" required>
             ';
             $db=new bd_conn();
             $user=$db->selectUsuarioAll();
@@ -33,11 +36,9 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
             echo $combo;
             echo '
                 </select>
-                <table id="info">
+                <table id="info" class="table">
                 </table>
-                <form action="../index.php" method="post">
-                    <button type="submit">Voltar</button>
-                </form>
+                <a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>
                 <script>
                 var info;
                 function load(){
@@ -76,7 +77,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
                     table.innerHTML="";
                     for(var i=0;i<info[\'id_mo\'].length;i++){
                         if(info[\'id_mo\'][i]==id_mo){
-                            inner="</tr><tr><td>Nome:</td></tr><tr><td>"+info["nome"][i]+"</td></tr><tr><td>Email:</td></tr><tr><td>"+info["email"][i]+"</td></tr><tr><td>Professor responsavel:</td></tr><tr><td>"+info["prof_resp"][i]+"</td></tr><tr><td>Disciplina:</td></tr><tr><td>"+info["disciplina"][i]+"</td></tr><tr><td>Curso:</td></tr><tr><td>"+info["curso"][i]+"</td></tr><tr><td>Numero de alunos:</td></tr><tr><td>"+info["qtd"][i]+"</td></tr>";
+                            inner="</tr><tr><td>Nome: "+info["nome"][i]+"</td></tr><tr><td>Email: "+info["email"][i]+"</td></tr><tr><td>Professor responsável: "+info["prof_resp"][i]+"</td></tr><tr><td>Disciplina: "+info["disciplina"][i]+"</td></tr><tr><td>Curso: "+info["curso"][i]+"</td></tr><tr><td>Número de alunos: "+info["qtd"][i]+"</td></tr>";
                             break;
                         }
                     }
@@ -90,62 +91,49 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
             $user=$db->selectQtdAluno($_SESSION['id']);
             if($user!=NULL){
                 echo '
-                    <p>Informacoes do(a) '.$_SESSION['nome'].'</p>
-                    <table>
+                    <body>
+                    <div style="margin:1%">
+                    <div class="jumbotron">
+                        <h1 class="display-8">Informações do(a) '.$_SESSION['nome'].'</h1>
+                    </div>
+                    <table class="table">
                         <tr>
-                            <td>RA:</td>
+                            <td>RA: '.$_SESSION['ra'].'</td>
                         </tr>
                         <tr>
-                            <td>'.$_SESSION['ra'].'</td>
+                            <td>Nome: '.$_SESSION['nome'].'</td>
                         </tr>
                         <tr>
-                            <td>Nome:</td>
+                            <td>Email: '.$_SESSION['email'].'</td>
                         </tr>
                         <tr>
-                            <td>'.$_SESSION['nome'].'</td>
+                            <td>Professor responsável: '.$_SESSION['prof_resp'].'</td>
                         </tr>
                         <tr>
-                            <td>Email:</td>
+                            <td>Disciplina: '.$_SESSION['disciplina'].'</td>
                         </tr>
                         <tr>
-                            <td>'.$_SESSION['email'].'</td>
+                            <td>Curso: '.$_SESSION['curso'].'</td>
                         </tr>
                         <tr>
-                            <td>Professor responsavel:</td>
-                        </tr>
-                        <tr>
-                            <td>'.$_SESSION['prof_resp'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Disciplina:</td>
-                        </tr>
-                        <tr>
-                            <td>'.$_SESSION['disciplina'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Curso:</td>
-                        </tr>
-                        <tr>
-                            <td>'.$_SESSION['curso'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Numero de alunos:</td>
-                        </tr>
-                        <tr>
-                            <td>'.$user['qtd'].'</td>
+                            <td>Número de alunos: '.$user['qtd'].'</td>
                         </tr>
                     </table>
                 ';
             }
             else{
-                echo '<body><p>Nao foi possivel recuperar as informacoes, tente novamente mais tarde</p>';
+                echo '
+                <body>
+                <div class="jumbotron">
+				    <h1 class="display-8">Não foi possível recuperar as Informações, Tente novamente mais tarde</h1>
+			    </div>
+                ';
             }
             echo '
-            <form action="../index.php" method="post">
-                <button type="submit">Voltar</button>
-            </form>
+            <a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>
             ';
 		}
 	?>
+    </div>
 </body>
 </html>

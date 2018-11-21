@@ -13,21 +13,21 @@ else{
 ?>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../../zerar.css">
-		<link rel="stylesheet" type="text/css" href="../../style.css">
-		<title>Observacoes</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../../custom.css">
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Monitoria - Observações dos Alunos</title>
 	</head>
 	<body onload="load()">
-		<div>
-			<p>Observacoes</p>
-		</div>
-		<div>
-			<div id="resp">
+		<div style="margin:1%">
+			<div class="jumbotron">
+				<h1 class="display-8">Observações dos Alunos</h1>
 			</div>
-			<form action="../index.php" method="post">
-				<button type="submit">Voltar</button>
-			</form>
+			<div>
+				<div id="resp">
+				</div>
+				<a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>
+			</div>
 		</div>
 		<script>
 		var chamada;
@@ -68,7 +68,7 @@ else{
 								array_push($chamada['dia_semana'],"Sexta");
 								break;
 							case 6:
-								array_push($chamada['dia_semana'],"Sabado");
+								array_push($chamada['dia_semana'],"Sábado");
 								break;
 						}
 						array_push($chamada['hora_inicio'],$row['hora_inicio']);
@@ -83,10 +83,10 @@ else{
 			?>
 			);
 			if(chamada['data_pre'].length<=0){
-				resp.innerHTML="<p>Nenhuma observacao foi registrada!</p>";
+				resp.innerHTML="<p>Nenhuma observação foi Registrada!</p>";
 			}
 			else{
-				resp.innerHTML='<select id="chamada" onchange="change()" required></select><div id="chama"></div>';
+				resp.innerHTML='<select class="form-control form-control-lg" id="chamada" onchange="change()" required></select><div id="chama"></div>';
 				select=document.getElementById("chamada");
 				for(var i=0;i<chamada['data_pre'].length;i++){
 					var opt=document.createElement('option');
@@ -110,11 +110,10 @@ else{
 			var chama=document.getElementById("chama");
 			var select=document.getElementById("chamada").value;
 			var inner="";
-			inner+="<table>";
+			inner+='<table class="table">';
 			for(var i=0;i<chamada['data_pre'].length;i++){
 				if(select==chamada['data_pre'][i]){
-					inner+='<tr><td style="border-color:transparent;">'+chamada['nome'][i]+':</td></tr>';
-					inner+='<tr><td>'+chamada['obs'][i]+'</td></tr>';
+					inner+='<tr><td style="text-align: center;">'+chamada['nome'][i]+':<br>'+chamada['obs'][i]+'</td></tr>';
 				}
 			}
 			chama.innerHTML=inner;

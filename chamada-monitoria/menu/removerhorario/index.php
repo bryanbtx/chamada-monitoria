@@ -14,17 +14,19 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../zerar.css">
-    <link rel="stylesheet" type="text/css" href="../../style.css">
-	<title>Remover horario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../custom.css">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Monitoria - Remover o horário</title>
 </head>
 <body onload="load()">
-    <div>
+    <div style="margin:1%">
+        <div class="jumbotron">
+            <h1 class="display-8">Remover o horário dos monitores</h1>
+        </div>
+        <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
         <form action="processo.php" method="post">
-            <p>Remover horario</p>
-            <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
-            <select id="monitores" name="id_mo" onchange="change()" required>
+            <select style="margin-bottom: 1rem;" class="form-control form-control-lg" id="monitores" name="id_mo" onchange="change()" required>
                 <?php
                 include_once dirname(dirname(__DIR__)).'/bd_conn.php';
                 $db=new bd_conn();
@@ -38,14 +40,11 @@ else{
                 echo $combo
                 ?>
             </select>
-            <select id="horarios" name="id_ho" required>
-
+            <select style="margin-bottom: 1rem;" class="form-control form-control-lg" id="horarios" name="id_ho" required>
             </select>
-            <button type="submit">Remover horario</button>
+            <button class="btn btn-fatec-red btn-block btn-lg rounded-top" type="submit">Remover Horário</button>
         </form>
-        <form action="../index.php" method="post">
-			<button type="submit">Voltar</button>
-		</form>
+        <a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar para o Menu</a>
     </div>
     <script>
     var horarios;
@@ -69,7 +68,7 @@ else{
 				$dia="Sexta";
 			break;
 			case 6:
-				$dia="Sabado";
+				$dia="Sábado";
 			break;
 		}
 		return $dia;

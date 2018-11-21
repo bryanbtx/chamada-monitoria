@@ -4,13 +4,13 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     if(isset($_GET['m'])){
         switch ($_GET['m']) {
             case 0:
-                $response="Aluno(s) adicionado com Sucesso!";
+                $response="Monitor removido com Sucesso!";
                 break;
             case 1:
-                $response="Algum erro desconhecido ocorreu, Tente novamente mais Tarde!";
+                $response="Algum erro ocorreu, Tente novamente mais tarde!";
                 break;
             case 2:
-                $response="Campos Requeridos estão Faltando!";
+                $response="Campos requeridos estão Faltando!";
                 break;
             case 3:
                 $response="Requisição Inválida";
@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         }
     }
     else{
-        $response="Campos Requeridos Estão Faltando!";
+        $response="Campos requeridos estão Faltando!";
     }
 }
 else{
@@ -38,8 +38,8 @@ echo '
         <div class="jumbotron">
             <h1 class="display-8">'.$response.'</h1>
         </div>
-        <a class="btn btn-fatec-red btn-lg btn-block rounded-top" href="./index.php" role="button">Voltar para Cadastro dos alunos</a>
-        <a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar para o Menu</a>
+        <a class="btn btn-fatec-red btn-lg btn-block rounded-top" href="./index.php" role="button">Voltar no Remover Monitor</a>
+        <a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar para o menu</a>
     </div>
 </body>
 </html>

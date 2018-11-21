@@ -1,0 +1,58 @@
+.btn{
+    white-space: normal
+}
+.btn-fatec-red {
+    background-color: #AE0F15;
+    border-color: #AE0F15;
+    color: #fff;
+}
+.btn-fatec-red:hover,
+.btn-fatec-red:active,
+.btn-fatec-red:focus {
+    background-color: #8d0c11;
+    border-color: #8d0c11;
+    color: #fff;
+}
+.btn:focus, .btn.focus, .btn:active, .form-control:focus {
+	box-shadow: none;
+}
+.btn-block+.btn-block {
+    margin-top: 0;
+}
+h1{
+    color: #38525E;
+}
+p{
+    color: #38525E;
+    font-size: 1.3em
+}
+body{
+    color: #38525E;
+}
+form{
+    margin-bottom:0;
+}
+.rounded-top{
+    border-top-left-radius: .3rem!important;
+    border-top-right-radius: .3rem!important;
+    border-bottom-left-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+}
+.rounded-botton{
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+    border-bottom-left-radius: .3rem!important;
+    border-bottom-right-radius: .3rem!important;
+}
+.form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+    position: relative;
+}
+table{
+    margin-top: 1rem;
+}
+.jumbotron{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}

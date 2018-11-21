@@ -8,106 +8,71 @@ if(!isset($_SESSION['id'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../zerar.css">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<title>Menu</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../custom.css">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Monitoria - Tela de Menu</title>
 </head>
 <body>
 	<?php
 	if($_SESSION['troca_senha']){
 		echo '
-		<p>Por favor insira uma nova senha para o '.$_SESSION['nome'].'</p>
-		<form action="./alterarsenha/index.php" method="post" onsubmit="return validate()">
-			<p id="alerta" style="text-align:left; color:#AE0F15;"></p>
-
-			<input id="senha" type="password" placeholder="Nova senha" name="senha" required>
-
-			<input id="r_senha" type="password" placeholder="Repetir nova senha" name="r_senha" required>
-
-			<button type="submit">Mudar senha</button>
-		</form>
+		<div style="margin:1%">
+			<div class="jumbotron">
+				<h1 class="display-8">'.$_SESSION['nome'].'! Insira uma Nova Senha para Acessar o Sistema. </h1>
+				<p id="alerta" style="text-align:left; color:#AE0F15;"></p>
+			</div>
+			<div>
+				<form action="./alterarsenha/index.php" method="post" onsubmit="return validate()">
+					<div class="form-group">
+						<input id="senha" type="password" class="form-control form-control-lg" placeholder="Nova senha" name="senha" required>
+					</div>
+					<div class="form-group">
+						<input id="r_senha" type="password" class="form-control form-control-lg" placeholder="Repetir nova senha" name="r_senha" required>
+					</div>
+					<button type="submit" class="btn btn-fatec-red btn-block btn-lg">Mudar senha</button>
+				</form>
+			</div>
+		</div>
 		';
 	}
 	else{
-		echo "
-		<h1>Menu</h1>
-		<p> Bem vindo ".$_SESSION['nome']."!</p>
-		";
+		echo '
+		<div style="margin:1%">
+			<div class="jumbotron">
+				<h1>Menu</h1>
+				<p> Bem vindo '.$_SESSION['nome'].'!</p>
+		';
 		if($_SESSION['id']==1){
 			if($_SESSION['email']==""){
-				echo '<p id="alerta" style="text-align:left; color:#AE0F15;">Por favor trocar o email padrao por um email valido</p>';
+				echo '<p id="alerta" style="text-align:left; color:#AE0F15;">Email Vazio! Vai em (Modificar Informações do Admin/Monitor) e digite o seu Email valido!</p>';
 			}
 			echo '
-			<div>
-				<form action="./criar/index.php" method="post">
-					<button type="submit">Criar Monitor</button>
-				</form>
-				
-				<form action="./consultar/index.php" method="post">
-					<button type="submit">Consultar Aluno</button>
-				</form>
-
-				<form action="./visualizarinfo/index.php" method="post">
-					<button type="submit">Visualizar Informacoes de um monitor</button>
-				</form>
-
-				<form action="./modificarinfo/index.php" method="post">
-					<button type="submit">Modificar informacoes de um monitor</button>
-				</form>
-
-				<form action="./adicionarhorario/index.php" method="post">
-					<button type="submit">Adicionar horarios de um monitor</button>
-				</form>
-
-				<form action="./removerhorario/index.php" method="post">
-					<button type="submit">Remover horarios de um monitor</button>
-				</form>
-
-				<form action="./sair.php" method="post">
-					<button type="submit">Sair</button>
-				</form>
+			</div>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-top" href="./criar/index.php" role="button">Criar um Novo Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarinfo/index.php" role="button">Visualizar Informações do Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./modificarinfo/index.php" role="button">Modificar Informações do Admin/Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./removermonitor/index.php" role="button">Remover um Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./adicionarhorario/index.php" role="button">Adicionar Horários para um Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./removerhorario/index.php" role="button">Remover Horários para um Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./consultar/index.php" role="button">Consultar as Chamadas de um Aluno</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="./sair.php" role="button">Sair</a>
 			</div>
 			';
 		}
 		else{
 			echo '
-			<div>
-			<form action="./adicionar/index.php" method="post">
-				<button type="submit">Cadastrar aluno</button>
-			</form>
-
-			<form action="./chamada/index.php" method="post">
-				<button type="submit">Realizar presenca</button>
-			</form>
-
-			<form action="./visualizarhorario/index.php" method="post">
-				<button type="submit">Visualizar Horario de Monitoria</button>
-			</form>
-			
-			<form action="./visualizarchamada/index.php" method="post">
-				<button type="submit">Visualizar Chamada</button>
-			</form>
-
-			<form action="./quantidadepresenca/index.php" method="post">
-				<button type="submit">Quantidade de presenca para cada aluno</button>
-			</form>
-
-			<form action="./visualizarobs/index.php" method="post">
-				<button type="submit">Visualizar Observacoes</button>
-			</form>
-
-			<form action="./visualizarinfo/index.php" method="post">
-				<button type="submit">Visualizar Informacoes</button>
-			</form>
-			
-			<form action="./modificarinfo/index.php" method="post">
-				<button type="submit">Modificar informacoes</button>
-			</form>
-
-			<form action="./sair.php" method="post">
-					<button type="submit">Sair</button>
-				</form>
+			</div>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-top" href="./adicionar/index.php" role="button">Cadastrar Novos Alunos</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./removeraluno/index.php" role="button">### Remover Aluno</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./chamada/index.php" role="button">Realizar Chamada</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarhorario/index.php" role="button">Visualizar os Horários da Monitoria</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarchamada/index.php" role="button">Visualizar as Presenças</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./quantidadepresenca/index.php" role="button">Quantidade de Presença Total dos Alunos</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarobs/index.php" role="button">Visualizar Observações</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarinfo/index.php" role="button">Visualizar Informações</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./modificarinfo/index.php" role="button">Modificar Informações</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="./sair.php" role="button">Sair</a>
 			</div>
 			';
 		}

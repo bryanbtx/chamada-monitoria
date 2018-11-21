@@ -14,17 +14,19 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	    <meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../../zerar.css">
-		<link rel="stylesheet" type="text/css" href="../../style.css">
-	<title>Adicionar horario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../custom.css">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Monitoria - Adicionar Horário do Monitor</title>
 </head>
 <body>
-    <div>
+    <div style="margin:1%">
+        <div class="jumbotron">
+            <h1 class="display-8">Adicionar o novo Horario para o Monitor</h1>
+        </div>
         <form action="processo.php" method="post" onsubmit="return validate()">
-            <p>Adicionar horario</p>
             <p id="alerta" style="text-align:left; color:#AE0F15;"></p>
-            <select name="id" required>
+            <select style="margin-bottom: 1rem;" class="form-control form-control-lg" name="id" required>
             <?php
             include_once dirname(dirname(__DIR__)).'/bd_conn.php';
             $db=new bd_conn();
@@ -38,22 +40,24 @@ else{
             echo $combo
             ?>
             </select>
-            <select name="dia_semana">
+            <select style="margin-bottom: 1rem;" class="form-control form-control-lg" name="dia_semana">
                 <option value="1">Segunda</option checked>
-                <option value="2">Terca</option>
+                <option value="2">Terça</option>
                 <option value="3">Quarta</option>
                 <option value="4">Quinta</option>
                 <option value="5">Sexta</option>
-                <option value="6">Sabado</option>
+                <option value="6">Sábado</option>
             </select>
-            <input id="hi" type="text" name="hora_inicio" placeholder="Hora do inicio" required>
-            <input id="ht" type="text" name="hora_termino" placeholder="Hora do termino" required>
-            Formato das horas: hh:mm<br>ex: 13:30
-            <button type="submit">Adicionar horario</button>
+            <div class="form-group">
+                <input class="form-control form-control-lg" id="hi" type="text" name="hora_inicio" placeholder="Hora do Início" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-lg" id="ht" type="text" name="hora_termino" placeholder="Hora do Término" required>
+            </div>
+            <p style="text-align:center">Formato das horas: hh:mm<br>ex: 13:30</p>
+            <button class="btn btn-fatec-red btn-block btn-lg rounded-top" type="submit">Adicionar o Horário</button>
         </form>
-        <form action="../index.php" method="post">
-			<button type="submit">Voltar</button>
-		</form>
+        <a class="btn btn-fatec-red btn-lg btn-block rounded-botton" href="../index.php" role="button">Voltar para o Menu</a>
     <div>
     <script>
     function validate(){
