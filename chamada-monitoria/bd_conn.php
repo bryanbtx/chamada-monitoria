@@ -109,9 +109,9 @@ class bd_conn{
 		$stmt->bind_param("i",$id_ho);
 		return $stmt->execute();
 	}
-	function insertAlunos($id_moni,$nome){
-		$stmt=$this->con->prepare("insert into aluno values(null,?,?);");
-		$stmt->bind_param("is",$id_moni,$nome);
+	function insertAlunos($id_moni,$nome,$curso){
+		$stmt=$this->con->prepare("insert into aluno values(null,?,?,?);");
+		$stmt->bind_param("iss",$id_moni,$nome,$curso);
 		return $stmt->execute();
 	}
 	function insertPresenca($id_al,$id_mo,$data_cha,$obs){
