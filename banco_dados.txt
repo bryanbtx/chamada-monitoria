@@ -1,0 +1,102 @@
+﻿create schema MONITORIA_FA4;
+
+use MONITORIA_FA4;
+
+create table TABFA4_W_MONITOR(
+    ID_MONI_SEC int auto_increment,
+    NM_RA varchar(13) not null,
+    NM_NOME varchar(100) not null,
+    NM_EMAIL varchar(255) not null,
+    NM_SENHA varchar(128) not null,
+    ST_TROCAR_SENHA bool not null,
+    NM_PROF_RESPONSAVEL varchar(100) not null,
+    NM_DISCIPLINA varchar(100) not null,
+    NM_CURSO varchar(100) not null,
+    ST_STATUS boolean not null,
+    CONSTRAINT UK_MONITOR_RA UNIQUE (),
+    CONSTRAINT UK_MONITOR_EMAIL UNIQUE (),
+    CONSTRAINT PK_MONITOR PRIMARY KEY (ID_MONI_SEC)
+);
+
+create table TABFA4_W_HORARIO(
+    ID_HORA_SEC int auto_increment,
+    FK_HORARIO_MONITOR int not null,
+    CS_DIA tinyint not null, -- Dia da semana 1 = segunda,2 = terça,3 = quarta,4 = quinta,5 = sexta,6 = sábado
+    HR_INICIO time not null,
+    HR_TERMINO time not null,
+    ST_STATUS boolean not null,
+    CONSTRAINT PK_HORARIO PRIMARY KEY (ID_HORA_SEC),
+    CONSTRAINT CS_HORARIO_DIA CHECK (CS_DIA>=1 AND CS_DIA<=6),
+    foreign key (FK_HORARIO_MONITOR) references monitor(ID_MONI_SEC)
+);
+
+create table TABFA4_W_ALUNO(
+    ID_ALUN_SEC int auto_increment,
+    FK_ALUNO_MONITOR int not null,
+    NM_NOME varchar(100) not null,
+    NM_CURSO varchar(100) not null,
+    CONSTRAINT PK_ALUNO PRIMARY KEY (ID_ALUN_SEC),
+    foreign key (FK_ALUNO_MONITOR) references monitor(ID_MONI_SEC)
+);
+
+create table TABFA4_W_PRESENCA(
+    ID_PRES_SEC int auto_increment,
+    FK_PRESENCA_ALUNO int not null,
+    FK_PRESENCA_HORARIO int not null,
+    DT_PRESENCA date not null,
+    DS_OBS varchar(255),
+    CONSTRAINT PK_PRESENCA PRIMARY KEY (ID_PRES_SEC),
+    foreign key (FK_PRESENCA_ALUNO) references aluno(ID_ALUN_SEC),
+    foreign key (FK_PRESENCA_HORARIO) references horario(ID_HORA_SEC)
+);
+
+insert into TABFA4_W_MONITOR values(null,"admin","Administrador","","C7AD44CBAD762A5DA0A452F9E854FDC1E0E7A52A38015F23F3EAB1D80B931DD472634DFAC71CD34EBC35D16AB7FB8A90C81F975113D6C7538DC69DD8DE9077EC",1,"","","");
+insert into TABFA4_W_MONITOR values(null,"test","Test","email@test.com","EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF",0,"Prof. A","Dis B","Cur C");
+
+/*
+create database dados;
+
+use dados;
+
+create table monitor(
+    id_mo int primary key auto_increment,
+    ra varchar(13) not null unique,
+    nome varchar(100) not null,
+    email varchar(255) not null unique,
+    senha varchar(128) not null,
+    troca_senha bool not null,
+    prof_resp varchar(100) not null,
+    disciplina varchar(100) not null,
+    curso varchar(100) not null
+);
+
+create table horario(
+    id_ho int primary key auto_increment,
+    id_ho_mo int not null,
+    dia_semana tinyint not null,
+    hora_inicio time not null,
+    hora_termino time not null,
+    foreign key (id_ho_mo) references monitor(id_mo)
+);
+
+create table aluno(
+    id_al int primary key auto_increment,
+    id_al_mo int not null,
+    nome varchar(100) not null,
+    curso varchar(100) not null,
+    foreign key (id_al_mo) references monitor(id_mo)
+);
+
+create table presenca(
+    id_pr int primary key auto_increment,
+    id_pr_al int not null,
+    id_pr_ho int not null,
+    data_pre date not null,
+    obs varchar(255),
+    foreign key (id_pr_al) references aluno(id_al),
+    foreign key (id_pr_ho) references horario(id_ho)
+);
+
+insert into monitor values(null,"admin","Administrador","","C7AD44CBAD762A5DA0A452F9E854FDC1E0E7A52A38015F23F3EAB1D80B931DD472634DFAC71CD34EBC35D16AB7FB8A90C81F975113D6C7538DC69DD8DE9077EC",1,"","","",0);
+insert into monitor values(null,"test","Test","email@test.com","EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF",0,"Prof. A","Dis B","Cur C",0);
+*/
