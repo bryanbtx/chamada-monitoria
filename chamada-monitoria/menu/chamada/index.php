@@ -68,16 +68,16 @@ else{
 					$result = mysqli_query($connect, $sql);
 					if (mysqli_num_rows($result) > 0)
 					{
-						echo '<table class="table"><tr><th>Nome</th><th>Presença</th><th>Obs</th></tr>';
+						echo '<table class="table"><tr><th>Nome</th><th>Presença</th></tr>';
 						while($row = mysqli_fetch_array($result)){
 							echo '
 							<tr>
 								<td style="width:85%;text-align:left;font-size:4vm;">' . $row['nome'].' <input type="hidden" value='. $row['id_al'] .' name="nomes[]">('.$row['id_al'].")</input>" . '</td>
 								<td style="width:10%;"> <div style="text-align: center" class="form-check"><input type="checkbox" class="form-check-input" onchange="onoff('. $row['id_al'] .')" value="'.$row['id_al'].'" name="check[]"/></div></td>
-							<td> <button type="button" class="btn btn-fatec-red btn-lg btn-block" id="bota'. $row['id_al'] .'" onclick="myFunction('.$row['id_al'].');" style="font-size:80%; heigth:100%;" disabled="true">Obs</button> </td>
+							
 							</tr>
 								<tr id="o'. $row['id_al'] . '" style="display:none;">
-								<td id="o'. $row['id_al'] . '" colspan="3"> <input type="text" class="form-control form-control-lg" id="limp'.$row['id_al'].'" style="margin:0px; width:99.5%; heigth:99.5%;" maxlength="255" name="obs[]" placeholder="observação"> </td>
+								<td id="o'. $row['id_al'] . '" colspan="3"> <input type="text" class="form-control form-control-lg" id="limp'.$row['id_al'].'" style="margin:0px; width:99.5%; heigth:99.5%;" maxlength="255" name="obs[]" placeholder="Descrição da dúvida"> </td>
 							</tr>
 							';
 						}
@@ -102,22 +102,13 @@ else{
 		</div>
 	<script>
 		function onoff(a){
-			var x = document.getElementById("bota"+a);
-
-			if(x.disabled){
-				x.disabled = false;
-			}else{
-				x.disabled = true;
-				document.getElementById('limp'+a).value='';
-				document.getElementById('o'+a).style.display="none";
-			}
-		}
-		function myFunction(a) {
 			var x = document.getElementById('o'+a);
 			if (x.style.display === "none") {
 				x.style.display = "";
+				document.getElementById('limp'+a).required = true;
 			} else {
 				x.style.display = "none";
+				document.getElementById('limp'+a).required = false;
 			}
 		}
 	</script>
