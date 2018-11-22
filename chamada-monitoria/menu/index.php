@@ -50,7 +50,8 @@ if(!isset($_SESSION['id'])){
 			echo '
 			</div>
 				<a class="btn btn-fatec-red btn-lg btn-block rounded-top" href="./criar/index.php" role="button">Criar um Novo Monitor</a>
-				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarinfo/index.php" role="button">Visualizar Informações do Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarinfo/index.php" role="button">Visualizar Informações de um Monitor</a>
+				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./visualizarhorario/index.php" role="button">Visualizar os Horários de um Monitoria</a>
 				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./modificarinfo/index.php" role="button">Modificar Informações do Admin/Monitor</a>
 				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./adicionarhorario/index.php" role="button">Adicionar Horários para um Monitor</a>
 				<a class="btn btn-fatec-red btn-lg btn-block rounded-0" href="./consultar/index.php" role="button">Consultar as Chamadas de um Aluno</a>
