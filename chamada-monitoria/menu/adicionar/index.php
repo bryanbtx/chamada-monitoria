@@ -50,7 +50,7 @@ else{
 			var aluno=document.getElementById("nome").value;
 			var curso=document.getElementById("curso").value;
 			var inner=alunos.innerHTML;
-			var inner1=document.getElementById("cursos").innerHTML;
+			var inner1=document.getElementById("cursos").value;
 			if(aluno.replace(/ /g,'')!="" && curso.replace(/ /g,'')!=""){
 				inner+=aluno+"<br>";
 				document.getElementById("nomes").value=inner;

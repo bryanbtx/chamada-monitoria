@@ -34,8 +34,8 @@ else{
 						echo '<select name="id_pr_ho" class="form-control form-control-lg" required>';
 						$combo="";
 						while($row=$user->fetch_assoc()){
-							$combo.='<option value="'.$row['id_ho'].'">';
-							switch($row['dia_semana']){
+							$combo.='<option value="'.$row['ID_HORA_SEC'].'">';
+							switch($row['CS_DIA']){
 								case 1:
 									$combo.="Segunda";
 								break;
@@ -55,7 +55,7 @@ else{
 									$combo.="Sábado";
 									break;
 							}
-							$combo.=" ".substr($row['hora_inicio'],0,-3).' - '.substr($row['hora_termino'],0,-3)."</option>";
+							$combo.=" ".substr($row['HR_INICIO'],0,-3).' - '.substr($row['HR_TERMINO'],0,-3)."</option>";
 						}
 						echo $combo."</select>";
 						$flag_horario=true;
@@ -64,7 +64,7 @@ else{
 						echo '<p>Você não possui Horário!</p>';
 					}
 					$connect = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-					$sql = "SELECT nome,id_al FROM aluno WHERE id_al_mo = ".$_SESSION['id']." ORDER BY nome";
+					$sql = "SELECT NM_NOME,ID_ALUN_SEC FROM TABFA4_W_ALUNO WHERE FK_ALUNO_MONITOR = ".$_SESSION['id']." and ST_DELETADO=0 ORDER BY NM_NOME";
 					$result = mysqli_query($connect, $sql);
 					if (mysqli_num_rows($result) > 0)
 					{
@@ -72,12 +72,12 @@ else{
 						while($row = mysqli_fetch_array($result)){
 							echo '
 							<tr>
-								<td style="width:85%;text-align:left;font-size:4vm;">' . $row['nome'].' <input type="hidden" value='. $row['id_al'] .' name="nomes[]">('.$row['id_al'].")</input>" . '</td>
-								<td style="width:10%;"> <div style="text-align: center" class="form-check"><input type="checkbox" class="form-check-input" onchange="onoff('. $row['id_al'] .')" value="'.$row['id_al'].'" name="check[]"/></div></td>
+								<td style="width:85%;text-align:left;font-size:4vm;">' . $row['NM_NOME'].' <input type="hidden" value='. $row['ID_ALUN_SEC'] .' name="nomes[]">('.$row['ID_ALUN_SEC'].")</input>" . '</td>
+								<td style="width:10%;"> <div style="text-align: center" class="form-check"><input type="checkbox" class="form-check-input" onchange="onoff('. $row['ID_ALUN_SEC'] .')" value="'.$row['ID_ALUN_SEC'].'" name="check[]"/></div></td>
 							
 							</tr>
-								<tr id="o'. $row['id_al'] . '" style="display:none;">
-								<td id="o'. $row['id_al'] . '" colspan="3"> <input type="text" class="form-control form-control-lg" id="limp'.$row['id_al'].'" style="margin:0px; width:99.5%; heigth:99.5%;" maxlength="255" name="obs[]" placeholder="Descrição da dúvida"> </td>
+								<tr id="o'. $row['ID_ALUN_SEC'] . '" style="display:none;">
+								<td id="o'. $row['ID_ALUN_SEC'] . '" colspan="3"> <input type="text" class="form-control form-control-lg" id="limp'.$row['ID_ALUN_SEC'].'" style="margin:0px; width:99.5%; heigth:99.5%;" maxlength="255" name="obs[]" placeholder="Descrição da dúvida"> </td>
 							</tr>
 							';
 						}

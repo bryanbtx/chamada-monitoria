@@ -31,7 +31,7 @@ if(!isset($_SESSION['id'])){
         $user=$db->selectUsuarioAll();
         $combo="";
         while($row=$user->fetch_assoc()){
-            $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+            $combo.='<option value="'.$row['ID_MONI_SEC'].'">'.$row['NM_RA'].'</option>';
         }
         echo $combo.'
                 </select>

@@ -44,10 +44,10 @@ else{
         $monitor['ra']=array();
         $monitor['nome']=array();
         while($row=$user->fetch_assoc()){
-            if($row['id_mo']!=1){
-                array_push($monitor['id_mo'],$row['id_mo']);
-                array_push($monitor['ra'],$row['ra']);
-                array_push($monitor['nome'],$row['nome']);
+            if($row['ID_MONI_SEC']!=1){
+                array_push($monitor['id_mo'],$row['ID_MONI_SEC']);
+                array_push($monitor['ra'],$row['NM_RA']);
+                array_push($monitor['nome'],$row['NM_NOME']);
             }
         }
         echo json_encode($monitor);

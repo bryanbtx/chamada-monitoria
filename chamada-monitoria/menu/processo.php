@@ -8,15 +8,15 @@ if(!isset($_SESSION['id'])){
             $db=new bd_conn();
             $user=$db->selectUsuario($_POST['uname'],$_POST['pwd']);
             if($user!=NULL){
-                $_SESSION['id']=$user['id_mo'];
+                $_SESSION['id']=$user['ID_MONI_SEC'];
                 $response['error']=false;
-                $_SESSION['ra']=$user['ra'];
-                $_SESSION['nome']=$user['nome'];
-                $_SESSION['email']=$user['email'];
-                $_SESSION['troca_senha']=$user['troca_senha'];
-                $_SESSION['prof_resp']=$user['prof_resp'];
-                $_SESSION['disciplina']=$user['disciplina'];
-                $_SESSION['curso']=$user['curso'];
+                $_SESSION['ra']=$user['NM_RA'];
+                $_SESSION['nome']=$user['NM_NOME'];
+                $_SESSION['email']=$user['NM_EMAIL'];
+                $_SESSION['troca_senha']=$user['ST_TROCAR_SENHA'];
+                $_SESSION['prof_resp']=$user['NM_PROF_RESPONSAVEL'];
+                $_SESSION['disciplina']=$user['NM_DISCIPLINA'];
+                $_SESSION['curso']=$user['NM_CURSO'];
             }
             else{
                 $response['error']=true;

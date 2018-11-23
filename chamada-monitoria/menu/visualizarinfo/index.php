@@ -28,8 +28,8 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
             $user=$db->selectUsuarioAll();
             $combo="";
             while($row=$user->fetch_assoc()){
-                if($row['id_mo']!=1){
-                    $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+                if($row['ID_MONI_SEC']!=1){
+                    $combo.='<option value="'.$row['ID_MONI_SEC'].'">'.$row['NM_RA'].'</option>';
                 }
             }
             $db->disconnectFromDB();
@@ -57,12 +57,12 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
             $info['curso']=array();
             $info['qtd']=array();
             while($row=$user->fetch_assoc()){
-                array_push($info['id_mo'],$row['id_mo']);
-                array_push($info['nome'],$row['nome']);
-                array_push($info['email'],$row['email']);
-                array_push($info['prof_resp'],$row['prof_resp']);
-                array_push($info['disciplina'],$row['disciplina']);
-                array_push($info['curso'],$row['curso']);
+                array_push($info['id_mo'],$row['ID_MONI_SEC']);
+                array_push($info['nome'],$row['NM_NOME']);
+                array_push($info['email'],$row['NM_EMAIL']);
+                array_push($info['prof_resp'],$row['NM_PROF_RESPONSAVEL']);
+                array_push($info['disciplina'],$row['NM_DISCIPLINA']);
+                array_push($info['curso'],$row['NM_CURSO']);
                 array_push($info['qtd'],$row['qtd']);
             }
             echo json_encode($info);

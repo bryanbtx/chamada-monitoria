@@ -33,8 +33,8 @@ else{
             $user=$db->selectUsuarioAll();
             $combo="";
             while($row=$user->fetch_assoc()){
-                if($row['id_mo']!=1){
-                    $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+                if($row['ID_MONI_SEC']!=1){
+                    $combo.='<option value="'.$row['ID_MONI_SEC'].'">'.$row['NM_RA'].'</option>';
                 }
             }
             echo $combo

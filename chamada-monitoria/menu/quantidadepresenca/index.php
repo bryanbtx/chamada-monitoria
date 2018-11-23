@@ -43,7 +43,7 @@ else{
 			if ($user!=NULL&&$user->num_rows>0)
 			{
 				while($row=$user->fetch_assoc()){
-                    array_push($presenca['nome'],$row['nome']);
+                    array_push($presenca['nome'],$row['NM_NOME']);
                     array_push($presenca['qtd'],$row['qtd']);
 				}
 			}

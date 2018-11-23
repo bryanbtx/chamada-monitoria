@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		if($user!=NULL){
             $senha=uniqid("");
             if($db->alterUsuarioSenhaTrocar($_POST['ra'],$senha)){
-                $to = $user['email'];
+                $to = $user['NM_EMAIL'];
                 $subject = "Senha";
                 $message = "Senha: ".$senha;
                 if(mail($to, $subject, $message)){

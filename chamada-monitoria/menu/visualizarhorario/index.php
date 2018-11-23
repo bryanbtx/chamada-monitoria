@@ -27,8 +27,8 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 				$user=$db->selectUsuarioAll();
 				$combo="";
 				while($row=$user->fetch_assoc()){
-					if($row['id_mo']!=1){
-						$combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+					if($row['ID_MONI_SEC']!=1){
+						$combo.='<option value="'.$row['ID_MONI_SEC'].'">'.$row['NM_RA'].'</option>';
 					}
 				}
 				$db->disconnectFromDB();
@@ -52,9 +52,9 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 				$info['dia_semana']=array();
 				$info['hora']=array();
 				while($row=$user->fetch_assoc()){
-					array_push($info['id_ho'],$row['id_ho']);
-					array_push($info['id_ho_mo'],$row['id_ho_mo']);
-					switch($row['dia_semana']){
+					array_push($info['id_ho'],$row['ID_HORA_SEC']);
+					array_push($info['id_ho_mo'],$row['FK_HORARIO_MONITOR']);
+					switch($row['CS_DIA']){
 						case 1:
 							array_push($info['dia_semana'],"Segunda");
 							break;
@@ -74,7 +74,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 							array_push($info['dia_semana'],"Sábado");
 							break;
 					}
-					array_push($info['hora'],substr($row['hora_inicio'],0,-3).' - '.substr($row['hora_termino'],0,-3));
+					array_push($info['hora'],substr($row['HR_INICIO'],0,-3).' - '.substr($row['HR_TERMINO'],0,-3));
 				}
 				echo json_encode($info);
 				echo '
@@ -105,7 +105,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 				';
 				include_once dirname(dirname(__DIR__)).'/constants.php';
 				$connect = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-				$sql = "SELECT dia_semana,hora_inicio,hora_termino FROM horario WHERE id_ho_mo = ".$_SESSION['id']." ORDER BY dia_semana";
+				$sql = "SELECT CS_DIA,HR_INICIO,HR_TERMINO FROM TABFA4_W_HORARIO WHERE FK_HORARIO_MONITOR = ".$_SESSION['id']." and ST_DELETADO=0 ORDER BY CS_DIA";
 				$result = mysqli_query($connect, $sql);
 				if (mysqli_num_rows($result) > 0)
 				{
@@ -113,7 +113,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 					while($row = mysqli_fetch_array($result)){
 						echo '<tr>';
 						echo '<td style="text-align:left;font-size:4vm;">';
-						switch($row['dia_semana']){
+						switch($row['CS_DIA']){
 							case 1:
 								echo "Segunda";
 							break;
@@ -133,7 +133,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 								echo "Sábado";
 								break;
 						}
-						echo "</td><td>".substr($row['hora_inicio'],0,-3).' - '.substr($row['hora_termino'],0,-3).'</td>';
+						echo "</td><td>".substr($row['HR_INICIO'],0,-3).' - '.substr($row['HR_TERMINO'],0,-3).'</td>';
 						echo '</tr>';
 					}
 					echo '</table>';

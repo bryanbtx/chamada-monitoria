@@ -49,9 +49,9 @@ else{
 			if ($user!=NULL&&$user->num_rows>0)
 			{
 				while($row=$user->fetch_assoc()){
-					if($row['obs']!=""){
-						array_push($chamada['data_pre'],$row['data_pre']);
-						switch($row['dia_semana']){
+					if($row['DS_OBS']!=""){
+						array_push($chamada['data_pre'],$row['DT_PRESENCA']);
+						switch($row['CS_DIA']){
 							case 1:
 								array_push($chamada['dia_semana'],"Segunda");
 								break;
@@ -71,10 +71,10 @@ else{
 								array_push($chamada['dia_semana'],"Sábado");
 								break;
 						}
-						array_push($chamada['hora_inicio'],$row['hora_inicio']);
-						array_push($chamada['hora_termino'],$row['hora_termino']);
-						array_push($chamada['nome'],$row['nome']);
-						array_push($chamada['obs'],$row['obs']);
+						array_push($chamada['hora_inicio'],$row['HR_INICIO']);
+						array_push($chamada['hora_termino'],$row['HR_TERMINO']);
+						array_push($chamada['nome'],$row['NM_NOME']);
+						array_push($chamada['obs'],$row['DS_OBS']);
 					}
 				}
 			}

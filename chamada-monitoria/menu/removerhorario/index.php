@@ -33,8 +33,8 @@ else{
                 $user=$db->selectUsuarioAll();
                 $combo="";
                 while($row=$user->fetch_assoc()){
-                    if($row['id_mo']!=1){
-                        $combo.='<option value="'.$row['id_mo'].'">'.$row['ra'].'</option>';
+                    if($row['ID_MONI_SEC']!=1){
+                        $combo.='<option value="'.$row['ID_MONI_SEC'].'">'.$row['NM_RA'].'</option>';
                     }
                 }
                 echo $combo
@@ -87,11 +87,11 @@ else{
         $horarios['hora_inicio']=array();
         $horarios['hora_termino']=array();
         while($row=$user->fetch_assoc()){
-            array_push($horarios['id_ho'],$row['id_ho']);
-            array_push($horarios['id_ho_mo'],$row['id_ho_mo']);
-            array_push($horarios['dia_semana'],$row['dia_semana']);
-            array_push($horarios['hora_inicio'],substr($row['hora_inicio'],0,-3));
-            array_push($horarios['hora_termino'],substr($row['hora_termino'],0,-3));
+            array_push($horarios['id_ho'],$row['ID_HORA_SEC']);
+            array_push($horarios['id_ho_mo'],$row['FK_HORARIO_MONITOR']);
+            array_push($horarios['dia_semana'],$row['CS_DIA']);
+            array_push($horarios['hora_inicio'],substr($row['HR_INICIO'],0,-3));
+            array_push($horarios['hora_termino'],substr($row['HR_TERMINO'],0,-3));
         }
         echo json_encode($horarios);
         ?>);
