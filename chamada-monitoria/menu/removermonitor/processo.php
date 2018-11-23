@@ -4,11 +4,16 @@ $response;
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['id_mo'])){
         $db=new bd_conn();
-        if($db->deleteMonitor($_POST['id_mo'])){
-            $response=0;
+        if($db->selectHorarioById_mo($_POST['id_mo'])->num_rows==0){
+            if($db->deleteMonitor($_POST['id_mo'])){
+                $response=0;
+            }
+            else{
+                $response=1;
+            }
         }
         else{
-            $response=1;
+            $response=4;
         }
         $db->disconnectFromDB();
     }

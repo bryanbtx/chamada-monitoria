@@ -15,6 +15,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             case 3:
                 $response="Requisição Inválida";
                 break;
+            case 4:
+                $response="Monitor tem horários registrados";
+                break;
         }
     }
     else{

@@ -13,7 +13,7 @@ else{
 include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 $response;
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	if(isset($_POST["check"])){
+	if(isset($_POST["check"]) and isset($_POST["obs"]) and isset($_POST["nomes"])){
 		$obs = array_values($_POST["obs"]);
 		$db=new bd_conn();
 		date_default_timezone_set('America/Sao_Paulo');

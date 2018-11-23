@@ -91,7 +91,10 @@ else{
 						}
 					}
 					else{
-						echo '<p>Você Não possui nenhum Aluno!</p>';
+						echo '
+						<p>Você Não possui nenhum Aluno!</p>
+						<a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>
+						';
 					}
 					if(!$flag_horario){
 						echo '<a class="btn btn-fatec-red btn-lg btn-block" href="../index.php" role="button">Voltar para o Menu</a>';

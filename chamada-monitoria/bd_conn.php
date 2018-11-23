@@ -126,7 +126,7 @@ class bd_conn{
 		return $stmt->get_result();
 	}
 	function selectChamada($id_mo){
-		$stmt=$this->con->prepare("select ID_PRES_SEC,FK_HORARIO_MONITOR,DT_PRESENCA,CS_DIA,HR_INICIO,HR_TERMINO,NM_NOME,DS_OBS from ((TABFA4_W_PRESENCA left join TABFA4_W_HORARIO on FK_PRESENCA_HORARIO=ID_HORA_SEC) left  join TABFA4_W_ALUNO on FK_PRESENCA_ALUNO=ID_ALUN_SEC) where FK_HORARIO_MONITOR=?  and TABFA4_W_ALUNO.ST_DELETADO=0 order by DT_PRESENCA,CS_DIA,NM_NOME");
+		$stmt=$this->con->prepare("select ID_PRES_SEC,FK_HORARIO_MONITOR,DT_PRESENCA,CS_DIA,HR_INICIO,HR_TERMINO,NM_NOME,DS_OBS from ((TABFA4_W_PRESENCA left join TABFA4_W_HORARIO on FK_PRESENCA_HORARIO=ID_HORA_SEC) left  join TABFA4_W_ALUNO on FK_PRESENCA_ALUNO=ID_ALUN_SEC) where FK_HORARIO_MONITOR=?  and TABFA4_W_ALUNO.ST_DELETADO=0 and TABFA4_W_HORARIO.ST_DELETADO=0 order by DT_PRESENCA,CS_DIA,NM_NOME");
 		$stmt->bind_param("i",$id_mo);
 		$stmt->execute();
 		return $stmt->get_result();
@@ -148,14 +148,19 @@ class bd_conn{
 		return $stmt->get_result();
 	}
 	function selectQtdPresenca($id_mo){
-		$stmt=$this->con->prepare('select NM_NOME,(select count(*) from TABFA4_W_PRESENCA where FK_PRESENCA_ALUNO=ID_ALUN_SEC)"qtd" from TABFA4_W_ALUNO where FK_ALUNO_MONITOR=? and TABFA4_W_ALUNO.ST_DELETADO=0 order by NM_NOME;');
+		$stmt=$this->con->prepare('select NM_NOME,(select count(*) from TABFA4_W_PRESENCA where FK_PRESENCA_ALUNO=ID_ALUN_SEC)"qtd" from TABFA4_W_ALUNO,TABFA4_W_HORARIO where FK_ALUNO_MONITOR=? and TABFA4_W_ALUNO.ST_DELETADO=0 and TABFA4_W_HORARIO.ST_DELETADO=0 order by NM_NOME;');
 		$stmt->bind_param("i",$id_mo);
 		$stmt->execute();
 		return $stmt->get_result();
 	}
 	function deleteMonitor($id_mo){
-		$stmt=$this->con->prepare("update monitor set ST_DELETADO=1 where ID_MONI_SEC=?;");
+		$stmt=$this->con->prepare("update TABFA4_W_MONITOR set ST_DELETADO=1 where ID_MONI_SEC=?;");
 		$stmt->bind_param("i",$id_mo);
+		return $stmt->execute();
+	}
+	function deleteAluno($id_al,$status){
+		$stmt=$this->con->prepare("update TABFA4_W_ALUNO set ST_DELETADO=? where ID_ALUN_SEC=?;");
+		$stmt->bind_param("ii",$status,$id_al);
 		return $stmt->execute();
 	}
 }
