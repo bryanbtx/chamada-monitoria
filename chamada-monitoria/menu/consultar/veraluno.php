@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	';
 	include_once dirname(dirname(__DIR__)).'/constants.php';
 	$connect = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	$sql = "select NM_CURSO,ID_PRES_SEC,NM_NOME,DT_PRESENCA,DS_OBS from TABFA4_W_PRESENCA inner join TABFA4_W_ALUNO on ID_ALUN_SEC=FK_PRESENCA_ALUNO left join tabfa4_w_horario on FK_PRESENCA_HORARIO=ID_HORA_SEC where NM_NOME like '%".$_POST["nome_aluno"]."%' and TABFA4_W_ALUNO.ST_DELETADO=0 order by DT_PRESENCA,CS_DIA;";
+	$sql = "select CS_DIA,NM_CURSO,ID_PRES_SEC,NM_NOME,DT_PRESENCA,DS_OBS from TABFA4_W_PRESENCA inner join TABFA4_W_ALUNO on ID_ALUN_SEC=FK_PRESENCA_ALUNO left join tabfa4_w_horario on FK_PRESENCA_HORARIO=ID_HORA_SEC where NM_NOME like '%".$_POST["nome_aluno"]."%' and TABFA4_W_ALUNO.ST_DELETADO=0 order by DT_PRESENCA,CS_DIA;";
 	$result = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($result) > 0){
 		echo '
@@ -39,11 +39,34 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		while($row = mysqli_fetch_array($result)){
 			echo '
 			<tr>
-				<td >'.$row['NM_NOME'].'</td>
-				<td > '.$row['NM_CURSO'].'</td>
+				<td rowspan="2">'.$row['NM_NOME'].'</td>
+				<td rowspan="2"> '.$row['NM_CURSO'].'</td>
 				<td >'. $row['DT_PRESENCA'] .'</td>
-				<td> <button class="btn btn-fatec-red btn-block btn-lg" type="button"  onclick="myFunction('.$row['ID_PRES_SEC'].');" style="font-size:80%; heigth:100%;">Obs</button> </td>
+				<td rowspan="2"> <button class="btn btn-fatec-red btn-block btn-lg" type="button"  onclick="myFunction('.$row['ID_PRES_SEC'].');" style="font-size:80%; heigth:100%;">Obs</button> </td>
 			</tr>
+				<td>';
+					switch($row['CS_DIA']){
+								case 1:
+									echo "Segunda";
+								break;
+								case 2:
+									echo "Terça";
+									break;
+								case 3:
+									echo "Quarta";
+									break;
+								case 4:
+									echo "Quinta";
+									break;
+								case 5:
+									echo "Sexta";
+									break;
+								case 6:
+									echo "Sábado";
+									break;
+							}
+							echo '</td>
+				
 			<tr id="o'. $row['ID_PRES_SEC'] . '" style="display:none;">
 				<td id="o'. $row['ID_PRES_SEC'] . '" colspan="3">
 			';

@@ -115,7 +115,7 @@ class bd_conn{
 		return $stmt->execute();
 	}
 	function insertPresenca($id_al,$id_mo,$data_cha,$obs){
-		$stmt=$this->con->prepare("insert into TABFA4_W_PRESENCA values(null,?,?,?,?,0);");
+		$stmt=$this->con->prepare("insert into TABFA4_W_PRESENCA values(null,?,?,?,?);");
 		$stmt->bind_param("iiss",$id_al,$id_mo,$data_cha,$obs);
 		return $stmt->execute();
 	}
