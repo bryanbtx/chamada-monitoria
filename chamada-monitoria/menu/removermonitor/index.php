@@ -22,8 +22,8 @@ else{
 <body onload="load()">
     <div style="margin:1%">
         <div class="jumbotron">
-            <h1 class="display-8">Remover Monitore</h1>
-            <p>Todos os alunos e horários registrados desse monitor serão removidos!</p>
+            <h1 class="display-8">Remover o(a) Monitor(a)</h1>
+            <p>Todos os alunos e horários registrados desse monitor serão removidos!</p> <!-- Verdade? -->
         </div>
         <form action="processo.php" method="post">
             <select style="margin-bottom: 1rem;" class="form-control form-control-lg" id="monitor" name="id_mo" required>

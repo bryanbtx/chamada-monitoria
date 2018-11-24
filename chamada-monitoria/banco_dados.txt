@@ -1,4 +1,4 @@
-create schema MONITORIA_FA4;
+﻿create schema MONITORIA_FA4;
 
 use MONITORIA_FA4;
 
@@ -46,7 +46,6 @@ create table TABFA4_W_PRESENCA(
     FK_PRESENCA_HORARIO int not null,
     DT_PRESENCA date not null,
     DS_OBS varchar(255),
-    ST_DELETADO bool not null,
     CONSTRAINT PK_PRESENCA PRIMARY KEY (ID_PRES_SEC),
     foreign key (FK_PRESENCA_ALUNO) references TABFA4_W_ALUNO(ID_ALUN_SEC),
     foreign key (FK_PRESENCA_HORARIO) references TABFA4_W_HORARIO(ID_HORA_SEC)

@@ -148,7 +148,7 @@ class bd_conn{
 		return $stmt->get_result();
 	}
 	function selectQtdPresenca($id_mo){
-		$stmt=$this->con->prepare('select NM_NOME,(select count(*) from TABFA4_W_PRESENCA where FK_PRESENCA_ALUNO=ID_ALUN_SEC)"qtd" from TABFA4_W_ALUNO,TABFA4_W_HORARIO where FK_ALUNO_MONITOR=? and TABFA4_W_ALUNO.ST_DELETADO=0 and TABFA4_W_HORARIO.ST_DELETADO=0 order by NM_NOME;');
+		$stmt=$this->con->prepare('select DISTINCT ID_ALUN_SEC, NM_NOME,(select count(*) from TABFA4_W_PRESENCA where FK_PRESENCA_ALUNO=ID_ALUN_SEC)"qtd" from TABFA4_W_ALUNO,TABFA4_W_HORARIO where FK_ALUNO_MONITOR=? and TABFA4_W_ALUNO.ST_DELETADO=0 and TABFA4_W_HORARIO.ST_DELETADO=0 order by NM_NOME;');
 		$stmt->bind_param("i",$id_mo);
 		$stmt->execute();
 		return $stmt->get_result();

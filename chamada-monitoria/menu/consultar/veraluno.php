@@ -29,27 +29,28 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	';
 	include_once dirname(dirname(__DIR__)).'/constants.php';
 	$connect = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	$sql = "select ID_PRES_SEC,NM_NOME,DT_PRESENCA,DS_OBS from TABFA4_W_PRESENCA inner join TABFA4_W_ALUNO on ID_ALUN_SEC=ID_PRES_SEC where NM_NOME like '%".$_POST["nome_aluno"]."%' and TABFA4_W_ALUNO.ST_DELETADO=0 order by DT_PRESENCA;";
+	$sql = "select NM_CURSO,ID_PRES_SEC,NM_NOME,DT_PRESENCA,DS_OBS from TABFA4_W_PRESENCA inner join TABFA4_W_ALUNO on ID_ALUN_SEC=FK_PRESENCA_ALUNO left join tabfa4_w_horario on FK_PRESENCA_HORARIO=ID_HORA_SEC where NM_NOME like '%".$_POST["nome_aluno"]."%' and TABFA4_W_ALUNO.ST_DELETADO=0 order by DT_PRESENCA,CS_DIA;";
 	$result = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($result) > 0){
 		echo '
 		<table class="table">
-		<tr><th>Nome</th><th>Data da presença</th><th>Obs</th></tr>
+		<tr><th>Nome</th><th>Curso</th><th>Data da presença</th><th>Obs</th></tr>
 		';
 		while($row = mysqli_fetch_array($result)){
 			echo '
 			<tr>
 				<td >'.$row['NM_NOME'].'</td>
+				<td > '.$row['NM_CURSO'].'</td>
 				<td >'. $row['DT_PRESENCA'] .'</td>
 				<td> <button class="btn btn-fatec-red btn-block btn-lg" type="button"  onclick="myFunction('.$row['ID_PRES_SEC'].');" style="font-size:80%; heigth:100%;">Obs</button> </td>
 			</tr>
 			<tr id="o'. $row['ID_PRES_SEC'] . '" style="display:none;">
 				<td id="o'. $row['ID_PRES_SEC'] . '" colspan="3">
 			';
-			if($row['obs']==""){
+			if($row['DS_OBS']==""){
 				echo 'Nenhum';
 			}else{
-				echo $row['obs'];
+				echo $row['DS_OBS'];
 			}
 			echo '
 				</td>
