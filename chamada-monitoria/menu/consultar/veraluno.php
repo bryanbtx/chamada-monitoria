@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 				<td >'. $row['DT_PRESENCA'] .'</td>
 				<td rowspan="2"> <button class="btn btn-fatec-red btn-block btn-lg" type="button"  onclick="myFunction('.$row['ID_PRES_SEC'].');" style="font-size:80%; heigth:100%;">Obs</button> </td>
 			</tr>
-				<td>';
+				<td style="border-color: transparent;">';
 					switch($row['CS_DIA']){
 								case 1:
 									echo "Segunda";
@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 							echo '</td>
 				
 			<tr id="o'. $row['ID_PRES_SEC'] . '" style="display:none;">
-				<td id="o'. $row['ID_PRES_SEC'] . '" colspan="3">
+				<td id="o'. $row['ID_PRES_SEC'] . '" colspan="4" style="border-color: transparent;">
 			';
 			if($row['DS_OBS']==""){
 				echo 'Nenhum';

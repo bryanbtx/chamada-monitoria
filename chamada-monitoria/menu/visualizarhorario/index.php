@@ -84,7 +84,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 					function change(){
 						var table=document.getElementById("info");
 						var id_mo=document.getElementById("monitores").value;
-						var inner="<tr><th>Dia da semana</th><th>Horário</th></tr>";
+						var inner=\'<tr><th>Dia da semana</th><th style="width: 40%;">Horário</th></tr>\';
 						for(var i=0;i<info[\'id_ho\'].length;i++){
 							if(info[\'id_ho_mo\'][i]==id_mo){
 								inner+="<tr><td>"+info["dia_semana"][i]+"</td><td>"+info["hora"][i]+"</td></tr>";
@@ -109,7 +109,7 @@ include_once dirname(dirname(__DIR__)).'/bd_conn.php';
 				$result = mysqli_query($connect, $sql);
 				if (mysqli_num_rows($result) > 0)
 				{
-					echo '<table class="table"><tr><th>Dia da semana</th><th>Horário</th></tr>';
+					echo '<table class="table"><tr><th>Dia da semana</th><th style="width: 40%;">Horário</th></tr>';
 					while($row = mysqli_fetch_array($result)){
 						echo '<tr>';
 						echo '<td style="text-align:left;font-size:4vm;">';
